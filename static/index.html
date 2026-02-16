@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Gestão de Medicamentos</title>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- DaisyUI CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <!-- Chart.js CDN (para gráficos futuros) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-base-200 min-h-screen flex flex-col">
+  <!-- Navbar -->
+  <nav class="navbar bg-base-100 shadow-md flex items-center justify-between px-4">
+    <div class="navbar-start">
+      <span class="font-bold text-xl text-primary">Gestão de Medicamentos</span>
+    </div>
+    <div class="navbar-center hidden sm:flex">
+      <ul class="menu menu-horizontal px-1" id="navbar-menu">
+        <li><a href="#" data-page="dashboard">Dashboard</a></li>
+        <li><a href="#" data-page="medicamentos">Medicamentos</a></li>
+        <li><a href="#" data-page="calendario">Calendário</a></li>
+        <li><a href="#" data-page="relatorios">Relatórios</a></li>
+        <li><a href="#" data-page="perfil">Perfil</a></li>
+      </ul>
+    </div>
+    <div class="navbar-end flex gap-2 items-center">
+      <button id="theme-toggle" class="btn btn-ghost btn-circle">
+        <svg id="sun" class="hidden w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+             viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+             d="M12 3v1m0 16v1m8.485-8.485l-.707.707m0-9.899.707.707M21 12h-1M4 12H3m2.515 8.485-.707-.707m0-9.899.707-.707M12 5a7 7 0 110 14 7 7 0 010-14z"></path></svg>
+        <svg id="moon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+             viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+             d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path></svg>
+      </button>
+      <button id="logout-btn" class="btn btn-error btn-sm hidden">Sair</button>
+    </div>
+  </nav>
+
+  <!-- Conteúdo dinâmico SPA -->
+  <main class="flex-1 flex items-center justify-center" id="app-content">
+    <!-- Conteúdo será carregado dinamicamente via JS -->
+  </main>
+
+  <!-- Modal de login/cadastro -->
+  <div class="modal" id="auth-modal">
+    <div class="modal-box">
+      <form id="auth-form" class="space-y-4">
+        <h2 class="font-bold text-lg" id="form-title">Entrar</h2>
+        <input type="text" required name="username" placeholder="Usuário" class="input input-bordered w-full" />
+        <input type="password" required name="password" placeholder="Senha" class="input input-bordered w-full" />
+        <div id="register-extra" class="hidden">
+          <!-- Espaço para campos extras de cadastro futuramente -->
+        </div>
+        <div class="flex justify-between">
+          <button type="submit" class="btn btn-primary">Entrar</button>
+          <button type="button" id="toggle-auth" class="btn btn-link">Cadastrar</button>
+        </div>
+        <div class="text-error text-sm mt-2" id="auth-error"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts principais -->
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
